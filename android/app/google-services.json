@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "216298271007",
+    "project_id": "browncart-user",
+    "storage_bucket": "browncart-user.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:216298271007:android:b73eedf7e544f733a0402a",
+        "android_client_info": {
+          "package_name": "com.example.browncart_user"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDi3JpZlkBxd0VgzZFoAPPZ3glb4k_VDF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
