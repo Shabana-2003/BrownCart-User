@@ -1,6 +1,6 @@
 import 'package:browncart_user/consts/theme_data.dart';
 import 'package:browncart_user/providers/theme_provider.dart';
-import 'package:browncart_user/screens/splash.dart';
+import 'package:browncart_user/view/splash/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +51,8 @@ class MyApp extends StatelessWidget {
               isDarkTheme: ThemeProvider.getIsDarkTheme, context: context),
           home: SplashScreen(),
         );
-      }),
+       }
+      ),
     );
   }
 }
