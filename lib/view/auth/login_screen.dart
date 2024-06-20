@@ -20,6 +20,13 @@ class _LoginScreenState extends State<LoginScreen> {
   final _auth = AuthController();
 
   bool isLoading = false;
+  bool _obscureText = true;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
 
   final _email = TextEditingController();
   final _password = TextEditingController();
@@ -63,7 +70,6 @@ class _LoginScreenState extends State<LoginScreen> {
           }
         },
       );
-    
 
   @override
   void dispose() {
@@ -142,6 +148,15 @@ class _LoginScreenState extends State<LoginScreen> {
                             enabledBorder: const UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
                             ),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _obscureText
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                                color: Colors.white,
+                              ),
+                              onPressed: _togglePasswordVisibility,
+                            ),
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -164,7 +179,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                             return null;
                           },
-                          obscureText: true,
+                          obscureText: _obscureText,
                           style: const TextStyle(
                               color: Colors.white,
                               fontFamily: "Gruppo-Regular"),
@@ -271,12 +286,19 @@ class _LoginScreenState extends State<LoginScreen> {
 
   showDialogBox() => showCupertinoDialog<String>(
         context: context,
-        
         builder: (BuildContext context) => CupertinoAlertDialog(
-          title: const Text('No Connection',style: TextStyle(
-                          color: Color.fromARGB(255, 0, 0, 0), fontFamily: "Gruppo-Regular"),),
-          content: const Text('Please check your internet connectivity',style: TextStyle(
-                          color: Color.fromARGB(255, 0, 0, 0), fontFamily: "Gruppo-Regular"),),
+          title: const Text(
+            'No Connection',
+            style: TextStyle(
+                color: Color.fromARGB(255, 0, 0, 0),
+                fontFamily: "Gruppo-Regular"),
+          ),
+          content: const Text(
+            'Please check your internet connectivity',
+            style: TextStyle(
+                color: Color.fromARGB(255, 0, 0, 0),
+                fontFamily: "Gruppo-Regular"),
+          ),
           actions: <Widget>[
             TextButton(
               onPressed: () async {
@@ -289,8 +311,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   setState(() => isAlertSet = true);
                 }
               },
-              child: const Text('OK',style: TextStyle(
-                          color: Color.fromARGB(255, 0, 0, 0), fontFamily: "Gruppo-Regular"),),
+              child: const Text(
+                'OK',
+                style: TextStyle(
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    fontFamily: "Gruppo-Regular"),
+              ),
             ),
           ],
         ),

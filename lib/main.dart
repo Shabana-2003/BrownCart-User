@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   if (kIsWeb) {
@@ -27,11 +27,16 @@ void main() async {
       storageBucket: "browncart-user.appspot.com",
       messagingSenderId: "216298271007",
       appId: "1:216298271007:web:ee4cd8d24ef4fe59a0402a",
-    ));
+    )
+    );
   }
 
   runApp(const MyApp());
 }
+
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

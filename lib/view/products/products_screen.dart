@@ -1,5 +1,5 @@
 import 'package:browncart_user/view/home/widgets/custom_home_app_bar.dart';
-import 'package:browncart_user/view/home/widgets/custom_product_info.dart';
+import 'package:browncart_user/view/products/widgets/productgrid.dart';
 import 'package:flutter/material.dart';
 
 class ProductScreen extends StatelessWidget {
@@ -25,10 +25,7 @@ class ProductScreen extends StatelessWidget {
                     fontFamily: "Gruppo-Regular"),
               ),
             ),
-            CustomProductInfo(),
-            CustomProductInfo(),
-            CustomProductInfo(),
-            CustomProductInfo(),
+            ProductGrid()
           ],
         ),
       ),

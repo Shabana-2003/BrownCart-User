@@ -3,6 +3,7 @@ import 'package:browncart_user/view/auth/login_screen.dart';
 import 'package:browncart_user/view/home/home_screen.dart';
 import 'package:browncart_user/view/utils/constants/size/sized_box.dart';
 import 'package:flutter/material.dart';
+
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
 
@@ -19,8 +20,8 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _email = TextEditingController();
   final _password = TextEditingController();
   final _confirmPassword = TextEditingController();
-  
- String? _validateEmail(String? value) {
+
+  String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Please enter your email';
     }
@@ -36,17 +37,24 @@ class _SignupScreenState extends State<SignupScreen> {
   //     ScaffoldMessenger.of(context).showSnackBar(
   //      const SnackBar(content: Text('successfully signup')),
   //     );
-     
+
   //   }
   // }
   void _submitForm() {
-  if (_formKey.currentState?.validate() ?? false) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Successfully signed up')),
-    );
+    if (_formKey.currentState?.validate() ?? false) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Successfully signed up')),
+      );
+    }
   }
-}
 
+  bool _obscureText = true;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
 
   @override
   void dispose() {
@@ -85,8 +93,6 @@ class _SignupScreenState extends State<SignupScreen> {
                   key: _formKey,
                   child: Column(
                     children: [
-                     
-                      
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 30),
                         child: TextFormField(
@@ -103,7 +109,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             fillColor: const Color.fromARGB(255, 0, 0, 0)
                                 .withOpacity(0.2),
                           ),
-                          validator:_validateEmail,
+                          validator: _validateEmail,
                           style: const TextStyle(
                               color: Colors.white,
                               fontFamily: "Gruppo-Regular"),
@@ -126,6 +132,15 @@ class _SignupScreenState extends State<SignupScreen> {
                             enabledBorder: const UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
                             ),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _obscureText
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                                color: Colors.white,
+                              ),
+                              onPressed: _togglePasswordVisibility,
+                            ),
                           ),
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -134,14 +149,14 @@ class _SignupScreenState extends State<SignupScreen> {
 
                             return null;
                           },
-                          obscureText: true,
+                          obscureText: _obscureText,
                           style: const TextStyle(
                               color: Colors.white,
                               fontFamily: "Gruppo-Regular"),
                         ),
                       ),
                       kHeight10,
-                       Padding(
+                      Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 30),
                         child: TextFormField(
                           controller: _confirmPassword,
@@ -157,11 +172,22 @@ class _SignupScreenState extends State<SignupScreen> {
                             enabledBorder: const UnderlineInputBorder(
                               borderSide: BorderSide(color: Colors.white),
                             ),
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                _obscureText
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
+                                color: Colors.white,
+                              ),
+                              onPressed: _togglePasswordVisibility,
+                            ),
                           ),
-                          obscureText: true,
-                         validator: (value) {
+                          obscureText: _obscureText,
+                          validator: (value) {
                             if (value == null || value.isEmpty) {
                               return 'Please enter your password again';
+                            } else if (value != _password.text) {
+                              return "Your Password is Incorrect";
                             }
 
                             return null;
@@ -229,22 +255,21 @@ class _SignupScreenState extends State<SignupScreen> {
 
   goToHome(BuildContext context) => Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) =>  HomeScreen()),
+        MaterialPageRoute(builder: (context) => HomeScreen()),
       );
 
   // _signup() async {
   //     _submitForm;
   //   await _auth.createUserWithEmailAndPassword(_email.text, _password.text);
-   
-    
+
   // }
   _signup() async {
-  _submitForm(); 
-  if (_formKey.currentState?.validate() ?? true) {
-    await _auth.createUserWithEmailAndPassword(_email.text, _password.text);
-   
-    // ignore: use_build_context_synchronously
-    goToHome(context);
+    _submitForm();
+    if (_formKey.currentState?.validate() ?? true) {
+      await _auth.createUserWithEmailAndPassword(_email.text, _password.text);
+
+      // ignore: use_build_context_synchronously
+      goToHome(context);
+    }
   }
-}
 }

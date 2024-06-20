@@ -1,4 +1,6 @@
+import 'package:browncart_user/view/bag/bag.dart';
 import 'package:browncart_user/view/menu/menu_page.dart';
+import 'package:browncart_user/view/wishlist/wishlist_screen.dart';
 import 'package:flutter/material.dart';
 
 class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -14,7 +16,7 @@ class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-       automaticallyImplyLeading: false, 
+      automaticallyImplyLeading: false,
       titleSpacing: 0,
       backgroundColor: backgroundColor,
       title: Row(
@@ -25,11 +27,11 @@ class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: IconButton(
               icon: const Icon(Icons.menu),
               onPressed: () {
-                 Navigator.push(
+                Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) =>const MenuPage()),
+                  MaterialPageRoute(builder: (context) => const MenuPage()),
                 );
-               },
+              },
             ),
           ),
           const SizedBox(
@@ -46,7 +48,6 @@ class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
                   fontFamily: "Gruppo-Regular"),
             ),
           ),
-          
           const SizedBox(width: 10),
           Row(
             mainAxisSize: MainAxisSize.min,
@@ -54,27 +55,28 @@ class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
               Padding(
                 padding: EdgeInsets.zero,
                 child: IconButton(
-                  icon: Icon(Icons.search_outlined),
+                  icon: const Icon(Icons.favorite_border_outlined),
                   onPressed: () {
-                    Navigator.pushNamed(context, '/search');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => WishlistScreen()),
+                    );
                   },
                 ),
               ),
               Padding(
                 padding: EdgeInsets.zero,
                 child: IconButton(
-                  icon: Icon(Icons.person_outline_outlined),
+                  icon: const Icon(Icons.shopping_cart_outlined),
                   onPressed: () {
-                    Navigator.pushNamed(context, '/profile');
-                  },
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.zero,
-                child: IconButton(
-                  icon: Icon(Icons.shopping_cart_outlined),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/cart');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BagScreen(
+                          getQuantity: (p0) {},
+                        ),
+                      ),
+                    );
                   },
                 ),
               ),

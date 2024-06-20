@@ -1,5 +1,5 @@
 import 'package:browncart_user/view/auth/login_screen.dart';
-import 'package:browncart_user/view/home/home_screen.dart';
+import 'package:browncart_user/view/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -17,11 +17,11 @@ class Wrapper extends StatelessWidget {
                 child: Text("Error"),
               );
             } else {
-              if (snapshot.data == null) //user not logedin but signed out
+              if (snapshot.data == null) 
               {
                 return const LoginScreen();
               } else {
-                return  HomeScreen();
+                return const BottomNavBar();
               }
             }
           }),
