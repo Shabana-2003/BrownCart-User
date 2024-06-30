@@ -31,15 +31,6 @@ class _SignupScreenState extends State<SignupScreen> {
     }
     return null;
   }
-
-  //   void _submitForm() {
-  //   if (_formKey.currentState?.validate() ?? false) {
-  //     ScaffoldMessenger.of(context).showSnackBar(
-  //      const SnackBar(content: Text('successfully signup')),
-  //     );
-
-  //   }
-  // }
   void _submitForm() {
     if (_formKey.currentState?.validate() ?? false) {
       ScaffoldMessenger.of(context).showSnackBar(

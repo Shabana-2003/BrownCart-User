@@ -1,7 +1,5 @@
-
 import 'package:browncart_user/view/bag/bag.dart';
 import 'package:browncart_user/view/home/dupe_home_screen.dart';
-//import 'package:browncart_user/view/home/home_screen.dart';
 import 'package:browncart_user/view/profile/profile_screen.dart';
 import 'package:browncart_user/view/wishlist/wishlist_screen.dart';
 import 'package:flutter/material.dart';
