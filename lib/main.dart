@@ -36,23 +36,6 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    // return MultiProvider(
-    //   providers: [
-    //     ChangeNotifierProvider(
-    //       create: (context) => ThemeProvider(),
-    //     )
-    //   ],
-    //   child: Consumer<ThemeProvider>(builder: (context, ThemeProvider, child) {
-    //     return MaterialApp(
-    //       debugShowCheckedModeBanner: false,
-    //       title: 'browncart',
-    //       theme: Styles.themeData(
-    //           isDarkTheme: ThemeProvider.getIsDarkTheme, context: context),
-    //       home: SplashScreen(),
-    //     );
-    //    }
-    //   ),
-    // );
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'browncart',

@@ -1,6 +1,6 @@
 import 'package:browncart_user/controller/authcontroller.dart';
 import 'package:browncart_user/view/auth/login_screen.dart';
-import 'package:browncart_user/view/home/home_screen.dart';
+import 'package:browncart_user/view/home/dupe_home_screen.dart';
 import 'package:browncart_user/view/utils/constants/size/sized_box.dart';
 import 'package:flutter/material.dart';
 
@@ -246,20 +246,12 @@ class _SignupScreenState extends State<SignupScreen> {
 
   goToHome(BuildContext context) => Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreen()),
+        MaterialPageRoute(builder: (context) => HomeScreenn()),
       );
-
-  // _signup() async {
-  //     _submitForm;
-  //   await _auth.createUserWithEmailAndPassword(_email.text, _password.text);
-
-  // }
   _signup() async {
     _submitForm();
     if (_formKey.currentState?.validate() ?? true) {
       await _auth.createUserWithEmailAndPassword(_email.text, _password.text);
-
-      // ignore: use_build_context_synchronously
       goToHome(context);
     }
   }

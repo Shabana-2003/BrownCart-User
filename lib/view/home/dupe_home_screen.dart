@@ -74,7 +74,6 @@ class HomeScreenn extends StatelessWidget {
                         ),
                       );
                     } else if (snapshot.hasData) {
-                      //List<Category> category = [];
                       final categories = snapshot.data!;
                       if (categories.isEmpty) {
                         return const Center(
@@ -153,12 +152,6 @@ class HomeScreenn extends StatelessWidget {
                   color: Color.fromARGB(255, 0, 0, 0),
                   fontFamily: "Gruppo-Regular"),
             ),
-            // CustomButton(
-            //   label: "Sign Out",
-            //   onPressed: () async {
-            //     await auth.signout();
-            //   },
-            // ),
             const SizedBox(height: 20),
             Image.asset("img/banner_two.jpeg"),
             const SizedBox(height: 26),
