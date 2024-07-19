@@ -1,10 +1,9 @@
-////
 import 'package:browncart_user/view/home/category_screen.dart';
 import 'package:browncart_user/view/utils/constants/style/commen_text.dart';
 import 'package:flutter/material.dart';
 
 class CategoryWidget extends StatefulWidget {
-  CategoryWidget({
+  const CategoryWidget({
     super.key,
     required this.title,
     this.onTap,
@@ -45,16 +44,6 @@ class _CategoryWidgetState extends State<CategoryWidget> {
           ),
           child: Center(
             child: 
-            // Text(
-            //   '${widget.title}',
-            //   maxLines: 1,
-            //   textAlign: TextAlign.center,
-            //   style: TextStyle(
-            //     fontSize: 12,
-            //     color: kWhite,
-            //     fontWeight: FontWeight.w500,
-            //   ),
-            // ),
             CommonText(
           size: 12,
           title: '${widget.title}',

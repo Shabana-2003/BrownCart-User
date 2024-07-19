@@ -1,4 +1,5 @@
 import 'package:browncart_user/view/profile/widgets/custom_radio_button.dart';
+import 'package:browncart_user/view/utils/colors/app_colors.dart';
 import 'package:browncart_user/view/utils/constants/size/sized_box.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key, required this.userId});
 
   @override
+  // ignore: library_private_types_in_public_api
   _EditProfileScreenState createState() => _EditProfileScreenState();
 }
 
@@ -101,12 +103,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            const Text(
+             Text(
               'Gender',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
-                color: Color.fromARGB(255, 0, 0, 0),
+                color:kBlack,
                 fontFamily: "Gruppo-Regular",
               ),
             ),
@@ -202,12 +204,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                child: const Text(
+                child: Text(
                   'Submit',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
-                    color: Color.fromARGB(255, 0, 0, 0),
+                    color:kBlack,
                     fontFamily: "Gruppo-Regular",
                   ),
                 ),

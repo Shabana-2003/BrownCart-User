@@ -1,3 +1,4 @@
+import 'package:browncart_user/view/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class NavigationText extends StatelessWidget {
@@ -5,7 +6,7 @@ class NavigationText extends StatelessWidget {
   final Widget targetPage;
 
   const NavigationText({
-   super.key,
+    super.key,
     required this.text,
     required this.targetPage,
   });
@@ -22,18 +23,15 @@ class NavigationText extends StatelessWidget {
             );
           },
           child: Text(
-            text,style:const TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w500,
-                                  color: Color.fromARGB(255, 0, 0, 0),
-                                  fontFamily: "Gruppo-Regular"),
-            
+            text,
+            style: TextStyle(
+                fontSize: 17,
+                fontWeight: FontWeight.w500,
+                color: kBlack,
+                fontFamily: "Gruppo-Regular"),
           ),
-         
         ),
-        
       ],
     );
-
   }
 }

@@ -1,6 +1,7 @@
 import 'package:browncart_user/view/bag/bag.dart';
-import 'package:browncart_user/view/home/dupe_home_screen.dart';
+import 'package:browncart_user/view/home/home_screen.dart';
 import 'package:browncart_user/view/profile/profile_screen.dart';
+import 'package:browncart_user/view/utils/colors/app_colors.dart';
 import 'package:browncart_user/view/wishlist/wishlist_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -74,14 +75,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
               padding: const EdgeInsets.all(6),
               selectedIndex: _selectedIndex,
               onTabChange: _onItemTapped,
-              tabs: const [
+              tabs: [
                 GButton(
                   icon: Icons.home,
                   text: "Home",
                   textStyle: TextStyle(
                     fontSize: 19,
                     fontWeight: FontWeight.w200,
-                    color: Color.fromARGB(255, 0, 0, 0),
+                    color: kBlack,
                     fontFamily: "Gruppo-Regular",
                   ),
                 ),
@@ -91,7 +92,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   textStyle: TextStyle(
                     fontSize: 19,
                     fontWeight: FontWeight.w200,
-                    color: Color.fromARGB(255, 0, 0, 0),
+                    color: kBlack,
                     fontFamily: "Gruppo-Regular",
                   ),
                 ),
@@ -101,7 +102,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   textStyle: TextStyle(
                     fontSize: 19,
                     fontWeight: FontWeight.w200,
-                    color: Color.fromARGB(255, 0, 0, 0),
+                    color: kBlack,
                     fontFamily: "Gruppo-Regular",
                   ),
                 ),
@@ -111,7 +112,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   textStyle: TextStyle(
                     fontSize: 19,
                     fontWeight: FontWeight.w200,
-                    color: Color.fromARGB(255, 0, 0, 0),
+                    color: kBlack,
                     fontFamily: "Gruppo-Regular",
                   ),
                 ),

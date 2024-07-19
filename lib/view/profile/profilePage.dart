@@ -1,4 +1,5 @@
 import 'package:browncart_user/view/profile/widgets/custom_underline.dart';
+import 'package:browncart_user/view/utils/colors/app_colors.dart';
 import 'package:browncart_user/view/utils/constants/size/sized_box.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -23,12 +24,12 @@ class _ProfilePageState extends State<ProfilePage> {
         title: Row(
           children: [
             const SizedBox(width: 90),
-            const Text(
+            Text(
               'Profile',
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w500,
-                color: Color.fromARGB(255, 0, 0, 0),
+                color: kBlack,
                 fontFamily: "Gruppo-Regular",
               ),
             ),
@@ -55,45 +56,45 @@ class _ProfilePageState extends State<ProfilePage> {
                       builder: (context) => AlertDialog(
                         backgroundColor:
                             const Color.fromARGB(255, 255, 242, 227),
-                        title: const Text(
+                        title: Text(
                           'Delete Profile',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w500,
-                            color: Color.fromARGB(255, 0, 0, 0),
+                            color: kBlack,
                             fontFamily: "Gruppo-Regular",
                           ),
                         ),
-                        content: const Text(
+                        content: Text(
                           'Are you sure you want to delete this profile?',
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w500,
-                            color: Color.fromARGB(255, 0, 0, 0),
+                            color: kBlack,
                             fontFamily: "Gruppo-Regular",
                           ),
                         ),
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.of(context).pop(false),
-                            child: const Text(
+                            child: Text(
                               'Cancel',
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500,
-                                color: Color.fromARGB(255, 0, 0, 0),
+                                color: kBlack,
                                 fontFamily: "Gruppo-Regular",
                               ),
                             ),
                           ),
                           TextButton(
                             onPressed: () => Navigator.of(context).pop(true),
-                            child: const Text(
+                            child: Text(
                               'Delete',
                               style: TextStyle(
                                 fontSize: 15,
                                 fontWeight: FontWeight.w500,
-                                color: Color.fromARGB(255, 209, 9, 9),
+                                color: kRed,
                                 fontFamily: "Gruppo-Regular",
                               ),
                             ),
@@ -104,6 +105,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
                     if (confirmDelete) {
                       await profileCollection.doc(userId).delete();
+                      // ignore: use_build_context_synchronously
                       Navigator.pop(context);
                     }
                   },
@@ -124,13 +126,13 @@ class _ProfilePageState extends State<ProfilePage> {
             return const Center(child: Text("Error fetching profile data"));
           }
           if (!snapshot.hasData || !snapshot.data!.exists) {
-            return const Center(
+            return Center(
                 child: Text(
               "No profile data found",
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
-                color: Color.fromARGB(255, 0, 0, 0),
+                color: kBlack,
                 fontFamily: "Gruppo-Regular",
               ),
             ));
@@ -157,10 +159,10 @@ class _ProfilePageState extends State<ProfilePage> {
                   alignment: Alignment.topLeft,
                   child: Text(
                     '${profileData?['Name'] ?? 'Name'}',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      color: kBlack,
                       fontFamily: "Gruppo-Regular",
                     ),
                   ),
@@ -172,10 +174,10 @@ class _ProfilePageState extends State<ProfilePage> {
                   alignment: Alignment.topLeft,
                   child: Text(
                     '${profileData?['Gender'] ?? 'Gender'}',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      color: kBlack,
                       fontFamily: "Gruppo-Regular",
                     ),
                   ),
@@ -187,10 +189,10 @@ class _ProfilePageState extends State<ProfilePage> {
                   alignment: Alignment.topLeft,
                   child: Text(
                     '${profileData?['Email'] ?? 'Email'}',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      color: kBlack,
                       fontFamily: "Gruppo-Regular",
                     ),
                   ),
@@ -201,11 +203,12 @@ class _ProfilePageState extends State<ProfilePage> {
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    '${profileData?['Phone Number']?.toString() ?? 'Enter Phone Number'}',
-                    style: const TextStyle(
+                    profileData?['Phone Number']?.toString() ??
+                        'Enter Phone Number',
+                    style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w500,
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      color: kBlack,
                       fontFamily: "Gruppo-Regular",
                     ),
                   ),

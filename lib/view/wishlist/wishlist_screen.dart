@@ -8,7 +8,7 @@ class WishlistScreen extends StatelessWidget {
     super.key,
   });
 
-  final user = FirebaseAuth.instance.currentUser!.email;
+  final user = FirebaseAuth.instance.currentUser?.email;
 
   @override
   Widget build(BuildContext context) {

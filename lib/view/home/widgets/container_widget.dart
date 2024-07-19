@@ -1,4 +1,4 @@
-
+//result product card
 import 'package:browncart_user/main.dart';
 import 'package:browncart_user/model/product_model.dart';
 import 'package:browncart_user/model/wishlist_model.dart';
@@ -42,7 +42,7 @@ class ContainerWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(5)),
+              borderRadius:const BorderRadius.vertical(top: Radius.circular(5)),
               child: Stack(
                 children: [
                   Image.network(
@@ -58,7 +58,7 @@ class ContainerWidget extends StatelessWidget {
                       stream: WishList.getWishlist(user!),
                       builder: (context, snapshot) {
                         if (snapshot.hasError) {
-                          return Center(
+                          return const Center(
                             child: Text('Something went wrong'),
                           );
                         } else if (snapshot.hasData) {
@@ -71,6 +71,7 @@ class ContainerWidget extends StatelessWidget {
                                   .isEmpty) {
                                 await WishList.addToWishlist(user!, product);
                                 showSnackBar(
+                                  // ignore: use_build_context_synchronously
                                   context,
                                   'Product added to wishlist',
                                   const Color.fromARGB(255, 87, 45, 15),
@@ -78,6 +79,7 @@ class ContainerWidget extends StatelessWidget {
                               } else {
                                 await WishList.deleteFromWishlist(user!, product);
                                 showSnackBar(
+                                  // ignore: use_build_context_synchronously
                                   context,
                                   'Product Removed from wishlist',
                                   const Color.fromARGB(255, 87, 45, 15),
@@ -100,7 +102,7 @@ class ContainerWidget extends StatelessWidget {
                                   ),
                           );
                         } else {
-                          return CircularProgressIndicator();
+                          return  CircularProgressIndicator(color: kBrown,);
                         }
                       },
                     ),
@@ -129,7 +131,7 @@ class ContainerWidget extends StatelessWidget {
                   child: Text(
                     '₹ ${product.price}',
                     textAlign: TextAlign.start,
-                    style: TextStyle(
+                    style:const TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
                       color: Color.fromARGB(255, 88, 58, 23),

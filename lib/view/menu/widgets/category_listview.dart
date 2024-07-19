@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class CategoryListView extends StatelessWidget {
   final List<String> items;
 
-  const CategoryListView({required this.items});
+  const CategoryListView({super.key, required this.items});
 
   @override
   Widget build(BuildContext context) {

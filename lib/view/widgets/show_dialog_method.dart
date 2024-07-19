@@ -32,8 +32,6 @@ Future<dynamic> showDialogMethod(
           ),
           TextButtonWidget(
             onPressed: () {
-             // final GoogleSignInProvider provider = Provider.of<GoogleSignInProvider>(context, listen: false);
-              //provider.logOut();
               Navigator.pop(context);
             },
             text: Text(

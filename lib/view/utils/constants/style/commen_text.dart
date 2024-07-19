@@ -8,13 +8,13 @@ class CommonText extends StatelessWidget {
   final String fontFamily;
 
   const CommonText({
-    Key? key,
+    super.key,
     required this.size,
     required this.title,
     this.color = Colors.black,
     this.fontWeight = FontWeight.normal,
     this.fontFamily = "Gruppo-Regular",
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

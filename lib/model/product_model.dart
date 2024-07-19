@@ -6,12 +6,16 @@
 //   final dynamic description;
 //   final int price;
 //   final dynamic category;
+//   final List<dynamic> size;
+  
+
 //   Product({
 //     required this.productName,
 //     required this.images,
 //     required this.description,
 //     required this.price,
 //     required this.category,
+//     required this.size
 //   });
 
 //   Map<String, dynamic> toJson() {
@@ -20,17 +24,29 @@
 //       'images': images,
 //       'description': description,
 //       'category': category,
-//       'price': price
+//       'price': price,
+//       'size':size
 //     };
 //   }
 
 //   static Product fromJson(Map<String, dynamic> json) {
+   
+//     print('Product data: $json');
+
+//     int price;
+//     if (json['price'] is String) {
+//       price = int.tryParse(json['price']) ?? 0;
+//     } else {
+//       price = json['price'] ?? 0;
+//     }
+
 //     return Product(
-//       productName: json['product'],
-//       images: json['images'],
-//       description: json['description'],
-//       price: json['price'],
-//       category: json['category'],
+//       productName: json['product'] ?? 'Unknown Product', 
+//       images: json['images'] ?? [], 
+//       description: json['description'] ?? 'No Description', 
+//       price: price,
+//       category: json['category'] ?? 'Uncategorized',  
+//       size: json['size'] ?? []
 //     );
 //   }
 
@@ -40,13 +56,17 @@
 //         .doc('Admin')
 //         .collection('Products')
 //         .snapshots()
-//         .map(
-//           (snapshots) => snapshots.docs
-//               .map((docs) => Product.fromJson(docs.data()))
-//               .toList(),
-//         );
+//         .map((snapshots) {
+//           try {
+//             return snapshots.docs
+//                 .map((docs) => Product.fromJson(docs.data()))
+//                 .toList();
+//           } catch (e) {
+//             print('Error parsing product data: $e'); 
+//             return [];
+//           }
+//         });
 //   }
-
 // }
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -56,6 +76,7 @@ class Product {
   final dynamic description;
   final int price;
   final dynamic category;
+  final List<dynamic> size;
 
   Product({
     required this.productName,
@@ -63,6 +84,7 @@ class Product {
     required this.description,
     required this.price,
     required this.category,
+    required this.size,
   });
 
   Map<String, dynamic> toJson() {
@@ -71,15 +93,14 @@ class Product {
       'images': images,
       'description': description,
       'category': category,
-      'price': price
+      'price': price,
+      'size': size,
     };
   }
 
   static Product fromJson(Map<String, dynamic> json) {
-    // Debugging line
     print('Product data: $json');
 
-    // Handle potential type issues gracefully
     int price;
     if (json['price'] is String) {
       price = int.tryParse(json['price']) ?? 0;
@@ -88,11 +109,12 @@ class Product {
     }
 
     return Product(
-      productName: json['product'] ?? 'Unknown Product',  // Fallback for null
-      images: json['images'] ?? [],  // Fallback for null
-      description: json['description'] ?? 'No Description',  // Fallback for null
+      productName: json['product'] ?? 'Unknown Product',
+      images: json['images'] ?? [],
+      description: json['description'] ?? 'No Description',
       price: price,
-      category: json['category'] ?? 'Uncategorized',  // Fallback for null
+      category: json['category'] ?? 'Uncategorized',
+      size: json['size'] != null ? List<dynamic>.from(json['size']) : [],
     );
   }
 
@@ -108,7 +130,7 @@ class Product {
                 .map((docs) => Product.fromJson(docs.data()))
                 .toList();
           } catch (e) {
-            print('Error parsing product data: $e');  // Error logging
+            print('Error parsing product data: $e');
             return [];
           }
         });

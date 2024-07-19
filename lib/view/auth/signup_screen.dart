@@ -1,8 +1,13 @@
-import 'package:browncart_user/controller/authcontroller.dart';
-import 'package:browncart_user/view/auth/login_screen.dart';
-import 'package:browncart_user/view/home/dupe_home_screen.dart';
-import 'package:browncart_user/view/utils/constants/size/sized_box.dart';
+import 'package:browncart_user/view/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:browncart_user/controller/auth_bloc/bloc/auth_bloc.dart';
+import 'package:browncart_user/controller/auth_bloc/bloc/auth_event.dart';
+import 'package:browncart_user/controller/auth_bloc/bloc/auth_state.dart';
+import 'package:browncart_user/view/auth/login_screen.dart';
+import 'package:browncart_user/view/utils/colors/app_colors.dart';
+import 'package:browncart_user/view/utils/constants/size/sized_box.dart';
+import 'package:browncart_user/view/utils/constants/style/text_style.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -14,12 +19,9 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final _auth = AuthController();
-
-  final _name = TextEditingController();
   final TextEditingController _email = TextEditingController();
-  final _password = TextEditingController();
-  final _confirmPassword = TextEditingController();
+  final TextEditingController _password = TextEditingController();
+  final TextEditingController _confirmPassword = TextEditingController();
 
   String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) {
@@ -30,13 +32,6 @@ class _SignupScreenState extends State<SignupScreen> {
       return 'Please enter a valid email';
     }
     return null;
-  }
-  void _submitForm() {
-    if (_formKey.currentState?.validate() ?? false) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Successfully signed up')),
-      );
-    }
   }
 
   bool _obscureText = true;
@@ -50,7 +45,6 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   void dispose() {
     super.dispose();
-    _name.dispose();
     _email.dispose();
     _password.dispose();
     _confirmPassword.dispose();
@@ -71,14 +65,7 @@ class _SignupScreenState extends State<SignupScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 kHeight200,
-                const Text(
-                  'JOIN BROWNCART NOW',
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w100,
-                      color: Colors.white,
-                      fontFamily: "Gruppo-Regular"),
-                ),
+                Text('JOIN BROWNCART NOW', style: textSignupHeadingStyle),
                 kHeight50,
                 Form(
                   key: _formKey,
@@ -90,20 +77,18 @@ class _SignupScreenState extends State<SignupScreen> {
                           controller: _email,
                           decoration: InputDecoration(
                             labelText: 'Email',
-                            enabledBorder: const UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: kWhite),
                             ),
-                            labelStyle: const TextStyle(
-                                color: Colors.white,
-                                fontFamily: "Gruppo-Regular"),
+                            labelStyle: TextStyle(
+                                color: kWhite, fontFamily: "Gruppo-Regular"),
                             filled: true,
                             fillColor: const Color.fromARGB(255, 0, 0, 0)
                                 .withOpacity(0.2),
                           ),
                           validator: _validateEmail,
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontFamily: "Gruppo-Regular"),
+                          style: TextStyle(
+                              color: kWhite, fontFamily: "Gruppo-Regular"),
                         ),
                       ),
                       kHeight10,
@@ -113,22 +98,21 @@ class _SignupScreenState extends State<SignupScreen> {
                           controller: _password,
                           decoration: InputDecoration(
                             labelText: 'Password',
-                            labelStyle: const TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                fontFamily: "Gruppo-Regular"),
+                            labelStyle: TextStyle(
+                                color: kWhite, fontFamily: "Gruppo-Regular"),
                             border: InputBorder.none,
                             filled: true,
                             fillColor: const Color.fromARGB(255, 0, 0, 0)
                                 .withOpacity(0.2),
-                            enabledBorder: const UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: kWhite),
                             ),
                             suffixIcon: IconButton(
                               icon: Icon(
                                 _obscureText
                                     ? Icons.visibility_off
                                     : Icons.visibility,
-                                color: Colors.white,
+                                color: kWhite,
                               ),
                               onPressed: _togglePasswordVisibility,
                             ),
@@ -137,13 +121,11 @@ class _SignupScreenState extends State<SignupScreen> {
                             if (value == null || value.isEmpty) {
                               return 'Please enter your password';
                             }
-
                             return null;
                           },
                           obscureText: _obscureText,
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontFamily: "Gruppo-Regular"),
+                          style: TextStyle(
+                              color: kWhite, fontFamily: "Gruppo-Regular"),
                         ),
                       ),
                       kHeight10,
@@ -153,22 +135,21 @@ class _SignupScreenState extends State<SignupScreen> {
                           controller: _confirmPassword,
                           decoration: InputDecoration(
                             labelText: 'Confirm Password',
-                            labelStyle: const TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255),
-                                fontFamily: "Gruppo-Regular"),
+                            labelStyle: TextStyle(
+                                color: kWhite, fontFamily: "Gruppo-Regular"),
                             border: InputBorder.none,
                             filled: true,
                             fillColor: const Color.fromARGB(255, 0, 0, 0)
                                 .withOpacity(0.2),
-                            enabledBorder: const UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: kWhite),
                             ),
                             suffixIcon: IconButton(
                               icon: Icon(
                                 _obscureText
                                     ? Icons.visibility_off
                                     : Icons.visibility,
-                                color: Colors.white,
+                                color: kWhite,
                               ),
                               onPressed: _togglePasswordVisibility,
                             ),
@@ -180,12 +161,10 @@ class _SignupScreenState extends State<SignupScreen> {
                             } else if (value != _password.text) {
                               return "Your Password is Incorrect";
                             }
-
                             return null;
                           },
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontFamily: "Gruppo-Regular"),
+                          style: TextStyle(
+                              color: kWhite, fontFamily: "Gruppo-Regular"),
                         ),
                       ),
                     ],
@@ -196,43 +175,49 @@ class _SignupScreenState extends State<SignupScreen> {
                   onPressed: _signup,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 255, 255, 255)
-                        .withOpacity(0.5), // Set transparent color
+                        .withOpacity(0.5),
                     padding: const EdgeInsets.symmetric(
                         horizontal: 60, vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  child: const Text(
+                  child: Text(
                     'SIGNUP',
-                    style: TextStyle(
-                        color: Colors.white, fontFamily: "Gruppo-Regular"),
+                    style:
+                        TextStyle(color: kWhite, fontFamily: "Gruppo-Regular"),
                   ),
                 ),
-                const SizedBox(height: 55),
+                kHeight55,
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  const Text(
-                    "Already have an account? ",
-                    style: TextStyle(
-                      fontFamily: "Gruppo-Regular",
-                      color: Color.fromARGB(255, 204, 204, 204),
-                      fontSize: 15,
-                    ),
-                  ),
+                  Text("Already have an account? ",
+                      style: textAlreadyHaveAccountStyle),
                   InkWell(
                     onTap: () => goToLogin(context),
-                    child: const Text(
-                      "Login",
-                      style: TextStyle(
-                        fontFamily: "Gruppo-Regular",
-                        color: Color.fromARGB(255, 204, 204, 204),
-                        fontSize: 15,
-                      ),
-                    ),
+                    child: Text("Login", style: textLoginButtonStyle),
                   )
                 ]),
               ],
             ),
+          ),
+          BlocListener<AuthBloc, AuthState>(
+            listener: (context, state) {
+              if (state is AuthLoading) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Signing up...')),
+                );
+              } else if (state is AuthSuccess) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(state.message)),
+                );
+                goToHome(context);
+              } else if (state is AuthFailure) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(state.error)),
+                );
+              }
+            },
+            child: Container(),
           ),
         ],
       ),
@@ -246,13 +231,15 @@ class _SignupScreenState extends State<SignupScreen> {
 
   goToHome(BuildContext context) => Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => HomeScreenn()),
+        MaterialPageRoute(builder: (context) => const BottomNavBar()),
       );
-  _signup() async {
-    _submitForm();
-    if (_formKey.currentState?.validate() ?? true) {
-      await _auth.createUserWithEmailAndPassword(_email.text, _password.text);
-      goToHome(context);
+
+  _signup() {
+    if (_formKey.currentState?.validate() ?? false) {
+      BlocProvider.of<AuthBloc>(context).add(SignUpWithEmailPassword(
+        email: _email.text,
+        password: _password.text,
+      ));
     }
   }
 }

@@ -1,6 +1,11 @@
-import 'package:browncart_user/controller/authcontroller.dart';
+import 'package:browncart_user/controller/auth_bloc/bloc/auth_bloc.dart';
+import 'package:browncart_user/controller/auth_bloc/bloc/auth_event.dart';
+import 'package:browncart_user/controller/auth_bloc/bloc/auth_state.dart';
+import 'package:browncart_user/view/utils/colors/app_colors.dart';
 import 'package:browncart_user/view/utils/constants/size/sized_box.dart';
+import 'package:browncart_user/view/utils/constants/style/text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ForgotPage extends StatefulWidget {
   const ForgotPage({super.key});
@@ -11,7 +16,7 @@ class ForgotPage extends StatefulWidget {
 
 class _ForgotPageState extends State<ForgotPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final _auth = AuthController();
+
   final _email = TextEditingController();
 
   String? _validateEmail(String? value) {
@@ -23,14 +28,6 @@ class _ForgotPageState extends State<ForgotPage> {
       return 'Please enter a valid email';
     }
     return null;
-  }
-
-  void _submitForm() {
-    if (_formKey.currentState?.validate() ?? false) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Successfully Login')),
-      );
-    }
   }
 
   @override
@@ -48,14 +45,7 @@ class _ForgotPageState extends State<ForgotPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 kHeight200,
-                const Text(
-                  'FORGOT PASSWORD',
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w100,
-                      color: Colors.white,
-                      fontFamily: "Gruppo-Regular"),
-                ),
+                Text('FORGOT PASSWORD', style: textforgotStyle),
                 kHeight161,
                 Form(
                   key: _formKey,
@@ -67,20 +57,18 @@ class _ForgotPageState extends State<ForgotPage> {
                           controller: _email,
                           decoration: InputDecoration(
                             labelText: 'Email',
-                            enabledBorder: const UnderlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: kWhite),
                             ),
-                            labelStyle: const TextStyle(
-                                color: Colors.white,
-                                fontFamily: "Gruppo-Regular"),
+                            labelStyle: TextStyle(
+                                color: kWhite, fontFamily: "Gruppo-Regular"),
                             filled: true,
                             fillColor: const Color.fromARGB(255, 0, 0, 0)
                                 .withOpacity(0.2),
                           ),
                           validator: _validateEmail,
-                          style: const TextStyle(
-                              color: Colors.white,
-                              fontFamily: "Gruppo-Regular"),
+                          style: TextStyle(
+                              color: kWhite, fontFamily: "Gruppo-Regular"),
                         ),
                       ),
                     ],
@@ -98,29 +86,60 @@ class _ForgotPageState extends State<ForgotPage> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  child: const Text(
+                  child: Text(
                     'SEND MAIL',
-                    style: TextStyle(
-                        color: Colors.white, fontFamily: "Gruppo-Regular"),
+                    style:
+                        TextStyle(color: kWhite, fontFamily: "Gruppo-Regular"),
                   ),
                 ),
               ],
             ),
+          ),
+          BlocListener<AuthBloc, AuthState>(
+            listener: (context, state) {
+              if (state is AuthLoading) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                      content: Text(
+                    'Sending password reset email...',
+                    style: textloginStyle,
+                  )),
+                );
+              } else if (state is AuthSuccess) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                      content: Text(
+                    state.message,
+                    style: textloginStyle,
+                  )),
+                );
+                Navigator.pop(context);
+              } else if (state is AuthFailure) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                      content: Text(
+                    state.error,
+                    style: textloginStyle,
+                  )),
+                );
+              }
+            },
+            child: Container(),
           ),
         ],
       ),
     );
   }
 
-  _forgotPassword() async {
-    _submitForm();
-    if (_formKey.currentState?.validate() ?? true) {
-      await _auth.sendPasswordResetLinkwa(_email.text);
-      // ignore: use_build_context_synchronously
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text("An email for password has been sent to your email")));
-      // ignore: use_build_context_synchronously
-      Navigator.pop(context);
+  _forgotPassword() {
+    if (_formKey.currentState?.validate() ?? false) {
+      BlocProvider.of<AuthBloc>(context).add(SendPasswordReset(_email.text));
     }
+  }
+
+  @override
+  void dispose() {
+    _email.dispose();
+    super.dispose();
   }
 }

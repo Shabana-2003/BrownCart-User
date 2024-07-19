@@ -1,3 +1,4 @@
+//unwanted now
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'cart_model.dart';
 
@@ -90,29 +91,12 @@ class Orders {
   }
 
   static Future<void> cancelOrder({required Orders order}) async {
-    final docUser = FirebaseFirestore.instance
+    FirebaseFirestore.instance
         .collection('myApp')
         .doc('Admin')
         .collection('Orders')
         .doc(order.orderId)
         .delete();
-
-    // final newOrder = Orders(
-    //   orderId: order.orderId,
-    //   productName: order.productName,
-    //   image: order.image,
-    //   price: order.price,
-    //   cartCount: order.cartCount,
-    //   payment: order.payment,
-    //   address: order.address,
-    //   email: order.email,
-    //   isCompleted: order.isCompleted,
-    //   deliveryType: order.deliveryType,
-    //   isCancelled: true,
-    // );
-
-    // final json = newOrder.toJson();
-    //docUser.
   }
 
   static Future<void> updateOrder({

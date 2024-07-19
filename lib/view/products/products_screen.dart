@@ -1,5 +1,6 @@
 import 'package:browncart_user/view/home/widgets/custom_home_app_bar.dart';
 import 'package:browncart_user/view/products/widgets/productgrid.dart';
+import 'package:browncart_user/view/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class ProductScreen extends StatelessWidget {
@@ -7,25 +8,25 @@ class ProductScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomHomeAppBar(
+    return Scaffold(
+      appBar:const CustomHomeAppBar(
         backgroundColor: Color.fromARGB(121, 202, 200, 198),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
             Padding(
-              padding: EdgeInsets.only(left: 10, top: 10),
+              padding:const EdgeInsets.only(left: 10, top: 10),
               child: Text(
                 "RESULTS",
                 style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w500,
-                    color: Color.fromARGB(255, 0, 0, 0),
+                    color:kBlack,
                     fontFamily: "Gruppo-Regular"),
               ),
             ),
-            ProductGrid()
+           const ProductGrid()
           ],
         ),
       ),

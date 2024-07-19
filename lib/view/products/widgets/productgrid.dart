@@ -1,5 +1,6 @@
 import 'package:browncart_user/model/product_model.dart';
 import 'package:browncart_user/view/home/widgets/container_widget.dart';
+import 'package:browncart_user/view/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class ProductGrid extends StatelessWidget {
@@ -13,7 +14,7 @@ class ProductGrid extends StatelessWidget {
         stream: Product.getProducts(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
+            return  Center(child: CircularProgressIndicator(color: kBrown,));
           } else if (snapshot.hasError) {
             print('Stream error: ${snapshot.error}');
             return Center(child: Text("Error: ${snapshot.error}"));

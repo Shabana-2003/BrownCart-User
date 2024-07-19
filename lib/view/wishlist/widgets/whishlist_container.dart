@@ -1,4 +1,3 @@
-
 import 'package:browncart_user/main.dart';
 import 'package:browncart_user/model/product_model.dart';
 import 'package:browncart_user/model/wishlist_model.dart';
@@ -34,7 +33,7 @@ class WhishlistContainer extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
           border: Border.all(
-            color: Colors.brown,
+            color: kBrown,
             width: 0.1,
           ),
         ),
@@ -42,7 +41,8 @@ class WhishlistContainer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(5)),
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(5)),
               child: Stack(
                 children: [
                   Image.network(
@@ -67,20 +67,24 @@ class WhishlistContainer extends StatelessWidget {
                             onTap: () async {
                               if (wishlist
                                   .where((element) =>
-                                      element.productName == product.productName)
+                                      element.productName ==
+                                      product.productName)
                                   .isEmpty) {
                                 await WishList.addToWishlist(user!, product);
                                 showSnackBar(
+                                  // ignore: use_build_context_synchronously
                                   context,
                                   'Product added to wishlist',
-                                  const Color.fromARGB(255, 87, 45, 15),
+                                  kBrown,
                                 );
                               } else {
-                                await WishList.deleteFromWishlist(user!, product);
+                                await WishList.deleteFromWishlist(
+                                    user!, product);
                                 showSnackBar(
+                                  // ignore: use_build_context_synchronously
                                   context,
                                   'Product Removed from wishlist',
-                                  const Color.fromARGB(255, 87, 45, 15),
+                                  kBrown,
                                 );
                               }
                               navigatorKey.currentState!
@@ -88,7 +92,8 @@ class WhishlistContainer extends StatelessWidget {
                             },
                             child: wishlist!
                                     .where((element) =>
-                                        element.productName == product.productName)
+                                        element.productName ==
+                                        product.productName)
                                     .isEmpty
                                 ? Icon(
                                     Icons.favorite_border,
@@ -100,7 +105,9 @@ class WhishlistContainer extends StatelessWidget {
                                   ),
                           );
                         } else {
-                          return CircularProgressIndicator();
+                          return CircularProgressIndicator(
+                            color: kBrown,
+                          );
                         }
                       },
                     ),

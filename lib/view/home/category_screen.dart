@@ -1,5 +1,6 @@
 import 'package:browncart_user/model/product_model.dart';
 import 'package:browncart_user/view/home/widgets/container_widget.dart';
+import 'package:browncart_user/view/utils/colors/app_colors.dart';
 import 'package:browncart_user/view/utils/constants/style/commen_text.dart';
 import 'package:flutter/material.dart';
 
@@ -56,7 +57,7 @@ class CategoryScreen extends StatelessWidget {
                 );
               }
             } else {
-              return CircularProgressIndicator();
+              return  CircularProgressIndicator(color: kBrown,);
             }
           }),
         ),

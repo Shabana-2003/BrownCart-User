@@ -16,3 +16,6 @@ Color kBlack38 = Colors.black38;
 Color kGrey300 = Colors.grey.shade300;
 Color kLightGreeen100 = Colors.lightGreen.shade100;
 Color kDeepPurple = Colors.deepPurple;
+Color kBrown =const Color.fromARGB(255, 70, 35, 13);
+Color kLightBrown = const Color.fromARGB(255, 252, 243, 233);
+Color kLightGreay =const Color.fromARGB(121, 202, 200, 198);

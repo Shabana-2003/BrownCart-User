@@ -1,3 +1,4 @@
+import 'package:browncart_user/view/utils/colors/app_colors.dart';
 import 'package:browncart_user/view/utils/constants/style/commen_text.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +27,7 @@ class ElevatedButtonWidget extends StatelessWidget {
           backgroundColor: color,
         ),
         onPressed: onPressed,
-        child: CommonText(size: 19, title: text,color: Colors.white,)
+        child: CommonText(size: 19, title: text,color: kWhite,)
       ),
     );
   }

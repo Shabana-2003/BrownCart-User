@@ -7,10 +7,11 @@ class CustomRadioButton<T> extends StatelessWidget {
   final Color activeColor;
 
   const CustomRadioButton({
+    super.key,
     required this.value,
     required this.groupValue,
     required this.onChanged,
-    this.activeColor = const Color.fromARGB(255, 243, 131, 33), // Default color
+    this.activeColor = const Color.fromARGB(255, 243, 131, 33), 
   });
 
   @override
@@ -39,7 +40,7 @@ class CustomRadioButton<T> extends StatelessWidget {
                   height: 16.0,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: activeColor, 
+                    color: activeColor,
                   ),
                 ),
               )

@@ -37,7 +37,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: CommonText(size: 25, title: 'Search'),
+        title:const CommonText(size: 25, title: 'Search'),
         centerTitle: true,
       ),
       body: Padding(
@@ -50,7 +50,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 keyboardType: TextInputType.text,
                 hintText: 'Search',
                 
-                icon: Icon(Icons.search),
+                icon:const Icon(Icons.search),
                 
                 onChanged: (value) {
                   searchProduct(value);
@@ -58,13 +58,13 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
               kHeight10,
               (searchProductList!.isEmpty)
-                  ? Center(
+                  ? const Center(
                   child:CommonText(size: 16, title:"No Products Found"),
                     )
                   : GridView.builder(
                       shrinkWrap: true,
-                      physics: ScrollPhysics(),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      physics:const ScrollPhysics(),
+                      gridDelegate:const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         mainAxisSpacing: 10,
                         crossAxisSpacing: 9,
