@@ -81,6 +81,7 @@
 import 'package:browncart_user/view/checkout/checkout_container.dart';
 import 'package:browncart_user/view/utils/colors/app_colors.dart';
 import 'package:browncart_user/view/utils/constants/style/commen_text.dart';
+import 'package:browncart_user/view/utils/constants/style/text_style.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../../view/utils/constants/size/sized_box.dart';
@@ -113,8 +114,8 @@ class _BagScreenState extends State<BagScreen> {
         stream: Cart.getCartItems(user!),
         builder: ((context, snapshot) {
           if (snapshot.hasError) {
-            return const Center(
-              child: Text('Something went wrong'),
+            return  Center(
+              child: Text('Something went wrong',style: orderAddressStyle,),
             );
           } else if (snapshot.hasData) {
             final cartItems = snapshot.data;
@@ -131,7 +132,7 @@ class _BagScreenState extends State<BagScreen> {
             } else {
               return SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(0),
                   child: Column(
                     children: [
                       MyCartWidget(
@@ -141,7 +142,7 @@ class _BagScreenState extends State<BagScreen> {
                       ),
                       kHeight10,
                       const Divider(
-                        thickness: 2,
+                        thickness: 1,
                       ),
                       kHeight10,
                       CheckoutContainer(cartItems: cartItems),
@@ -151,7 +152,7 @@ class _BagScreenState extends State<BagScreen> {
               );
             }
           } else {
-            return CircularProgressIndicator(color: kBrown,);
+            return Center(child: CircularProgressIndicator(color: kBrown,));
           }
         }),
       ),

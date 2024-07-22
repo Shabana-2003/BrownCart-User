@@ -14,6 +14,7 @@ Color kWhite = Colors.white;
 Color kBlack = Colors.black;
 Color kBlack38 = Colors.black38;
 Color kGrey300 = Colors.grey.shade300;
+Color kLightGreayy =const Color.fromARGB(255, 245, 245, 245);
 Color kLightGreeen100 = Colors.lightGreen.shade100;
 Color kDeepPurple = Colors.deepPurple;
 Color kBrown =const Color.fromARGB(255, 70, 35, 13);

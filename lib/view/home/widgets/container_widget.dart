@@ -7,6 +7,7 @@ import 'package:browncart_user/view/utils/colors/app_colors.dart';
 import 'package:browncart_user/view/utils/texts/show_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 import '../../utils/constants/size/sized_box.dart';
 
 class ContainerWidget extends StatelessWidget {
@@ -101,9 +102,20 @@ class ContainerWidget extends StatelessWidget {
                                     color: kRed,
                                   ),
                           );
-                        } else {
-                          return  CircularProgressIndicator(color: kBrown,);
                         }
+                         else {
+  return Center(
+    child: Shimmer.fromColors(
+      baseColor: Colors.grey[300]!,
+      highlightColor: Colors.grey[100]!,
+      child:const Icon(
+       Icons.favorite,
+        color: Colors.white,
+      ),
+    ),
+  );
+}
+
                       },
                     ),
                   ),

@@ -58,9 +58,13 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
               kHeight10,
               (searchProductList!.isEmpty)
-                  ? const Center(
-                  child:CommonText(size: 16, title:"No Products Found"),
-                    )
+                  ? const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      kHeight200,
+                       CommonText(size: 16, title:"No Products Found"),
+                    ],
+                  )
                   : GridView.builder(
                       shrinkWrap: true,
                       physics:const ScrollPhysics(),

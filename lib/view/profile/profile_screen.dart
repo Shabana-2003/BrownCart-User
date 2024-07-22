@@ -1,5 +1,8 @@
 import 'package:browncart_user/controller/auth_bloc/bloc/auth_bloc.dart';
 import 'package:browncart_user/controller/auth_bloc/bloc/auth_event.dart';
+import 'package:browncart_user/view/Account/account_screen.dart';
+import 'package:browncart_user/view/Account/address/my_addresses.dart';
+import 'package:browncart_user/view/Account/orders/order_screen.dart';
 import 'package:browncart_user/view/home/home_screen.dart';
 import 'package:browncart_user/view/profile/profilePage.dart';
 import 'package:browncart_user/view/profile/widgets/custom_underline.dart';
@@ -80,15 +83,15 @@ authBloc.add(SignOut());
             const SizedBox(height: 64),
             const Align(
               alignment: Alignment.topLeft,
-              child: NavigationText(text: "Orders", targetPage: HomeScreenn()),
+              child: NavigationText(text: "Orders", targetPage: OrderScreen()),
             ),
             kHeight10,
            const CustomUnderLine(),
             kHeight10,
-            const Align(
+             Align(
                 alignment: Alignment.topLeft,
                 child: NavigationText(
-                    text: "Manage Address", targetPage: HomeScreenn())),
+                    text: "Manage Address", targetPage: MyAddresses())),
                     kHeight10,
            const CustomUnderLine(),
             kHeight10,
@@ -114,10 +117,10 @@ authBloc.add(SignOut());
                     kHeight10,
           const  CustomUnderLine(),
             kHeight10,
-            const Align(
+             Align(
               alignment: Alignment.topLeft,
               child: NavigationText(
-                  text: "Personal Information", targetPage: HomeScreenn()),
+                  text: "Share", targetPage: ProfileScreenn()),
             ),
             kHeight10,
            const CustomUnderLine(),

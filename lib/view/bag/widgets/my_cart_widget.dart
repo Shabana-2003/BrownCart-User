@@ -1,4 +1,6 @@
 import 'dart:developer';
+import 'package:browncart_user/model/product_model.dart';
+import 'package:browncart_user/view/home/selected_item_screen.dart';
 import 'package:browncart_user/view/utils/colors/app_colors.dart';
 import 'package:browncart_user/view/utils/constants/style/commen_text.dart';
 import 'package:browncart_user/view/utils/constants/style/text_style.dart';
@@ -40,7 +42,7 @@ class _MyCartWidgetState extends State<MyCartWidget> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: SizedBox(
-        height: 360,
+        height: 430,
         child: ListView.separated(
           itemBuilder: (context, index) {
             return Container(
@@ -55,7 +57,23 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                   Padding(
                     padding: const EdgeInsets.all(8),
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                         final product = Product(
+                          productName: widget.cartItems[index].productName,
+                          images: [widget.cartItems[index].image],
+                          description: '', 
+                          price: widget.cartItems[index].price,
+                          size: [widget.cartItems[index].selectedSize], // You can fill in the actual sizes if available
+                          category: '', // You can fill in the actual category if available
+                        );
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SelectedItemScreen(product: product),
+                          ),
+                        );
+                      },
                       child: Container(
                         width: 120,
                         height: double.infinity,
@@ -82,11 +100,7 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                             widget.cartItems[index].productName,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              fontSize: 13.5,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: "Gruppo-Regular",
-                            ),
+                            style: checkOutAddressStyle,
                           ),
                           kHeight10,
                           Text(

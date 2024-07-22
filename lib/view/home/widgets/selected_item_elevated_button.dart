@@ -1,3 +1,4 @@
+import 'package:browncart_user/view/utils/colors/app_colors.dart';
 import 'package:browncart_user/view/utils/constants/style/commen_text.dart';
 import 'package:flutter/material.dart';
 
@@ -12,14 +13,19 @@ class SelectedItemElevatedButtonWidget extends StatelessWidget {
   final String text;
   final void Function() onPressed;
   final Color backColor;
+
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color.fromARGB(255, 80, 52, 41),
-          fixedSize: const Size(200, 30),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: backColor, // Use the provided backColor
+        minimumSize: Size(double.infinity, 60), // Full width, height 35
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.zero, // No border radius for rectangular shape
         ),
-        onPressed: onPressed,
-        child: CommonText(size: 25, title: text));
+      ),
+      onPressed: onPressed,
+      child: CommonText(size: 20, title: text, color: kWhite),
+    );
   }
 }

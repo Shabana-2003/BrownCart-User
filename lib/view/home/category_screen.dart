@@ -10,7 +10,7 @@ class CategoryScreen extends StatelessWidget {
   final String categoryName;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
         title: CommonText(size: 19, title: categoryName),
@@ -57,7 +57,7 @@ class CategoryScreen extends StatelessWidget {
                 );
               }
             } else {
-              return  CircularProgressIndicator(color: kBrown,);
+              return  Center(child: CircularProgressIndicator(color: kBrown,));
             }
           }),
         ),
