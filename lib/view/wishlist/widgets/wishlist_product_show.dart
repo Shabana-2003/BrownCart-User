@@ -1,5 +1,6 @@
 import 'package:browncart_user/model/product_model.dart';
 import 'package:browncart_user/model/wishlist_model.dart';
+import 'package:browncart_user/view/utils/constants/style/text_style.dart';
 import 'package:browncart_user/view/wishlist/widgets/whishlist_container.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -15,14 +16,14 @@ final user = FirebaseAuth.instance.currentUser!.email;
         stream: WishList.getWishlist(user!),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return const Center(
-              child: Text('Something went wrong'),
+            return  Center(
+              child: Text('Something went wrong',style: priceStyle,),
             );
           } else
           if (snapshot.hasData) {
            final wishlist = snapshot.data!;
             if (wishlist.isEmpty) {
-              return const Center(child: Text('Product list is empty'));
+              return  Center(child: Text('Product list is empty',style: priceStyle,));
             } else {
               return GridView.builder(
                 shrinkWrap: true,

@@ -5,6 +5,7 @@ import 'package:browncart_user/view/utils/constants/size/sized_box.dart';
 import 'package:browncart_user/view/utils/constants/style/text_style.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class TotalAmount extends StatelessWidget {
   TotalAmount({super.key, required this.cartItems, required this.gst});
 

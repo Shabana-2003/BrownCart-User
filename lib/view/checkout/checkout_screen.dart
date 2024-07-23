@@ -82,7 +82,7 @@
 //   }
 // }
 import 'package:browncart_user/model/address_model.dart';
-import 'package:browncart_user/view/Account/address/check.dart';
+import 'package:browncart_user/view/Account/address/payment_screen.dart';
 import 'package:browncart_user/view/checkout/checkout_address.dart';
 import 'package:browncart_user/view/checkout/checkout_order.dart';
 import 'package:browncart_user/view/checkout/total_amout.dart';
@@ -145,12 +145,12 @@ class CheckoutScreen extends StatelessWidget {
                 ElevatedButtonWidget(
                   onPressed: () {
                     Navigator.push(
-                      context,
+                     context,
                       MaterialPageRoute(
-                        builder: ((context) =>const CheckoutPagee(
-                              // address: address,
-                              // cartItems: cartItems,
-                              // gst: roundedGst,
+                        builder: ((context) => PaymentScreen(
+                              address: address,
+                              cartItems: cartItems,
+                              gst: roundedGst,
                             )),
                       ),
                     );

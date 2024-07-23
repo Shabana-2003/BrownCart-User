@@ -7,6 +7,7 @@ import 'package:browncart_user/view/widgets/elevated_button_widget.dart';
 import 'package:flutter/material.dart';
 import '../../view/utils/constants/size/sized_box.dart';
 
+// ignore: must_be_immutable
 class CheckoutContainer extends StatelessWidget {
   CheckoutContainer({
     super.key,

@@ -145,3 +145,12 @@ TextStyle textordertrack = TextStyle(
 
 TextStyle cartStyle =
     TextStyle(fontSize: 16, fontWeight: FontWeight.w200, color: kBlack, fontFamily: "Gruppo-Regular");
+
+TextStyle AddressStyle =
+    TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: kBlack, fontFamily: "Gruppo-Regular");
+
+  TextStyle SortStyle =  TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: kBlack,
+                          fontFamily: "Gruppo-Regular");

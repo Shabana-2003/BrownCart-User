@@ -23,3 +23,5 @@ const SizedBox kHeight15 = SizedBox(height: 15);
 SizedBox kWidth10 =const SizedBox(width: 10);
 SizedBox kWidth60 =const SizedBox(width: 60);
 SizedBox kWidth20 =const SizedBox(width: 20);
+SizedBox kWidth4 =const SizedBox(width: 4);
+SizedBox kWidth2 =const SizedBox(width: 2);

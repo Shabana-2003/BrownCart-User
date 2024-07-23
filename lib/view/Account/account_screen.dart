@@ -1,5 +1,4 @@
 import 'package:browncart_user/model/user_model.dart';
-import 'package:browncart_user/view/Account/orders/order_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
@@ -9,7 +8,6 @@ import '../../../view/utils/constants/style/text_style.dart';
 import 'widgets/circle_avatar_widget.dart';
 import 'widgets/listtile_widget.dart';
 import 'my_account_tile.dart';
-import 'address/my_addresses.dart';
 
 class ProfileScreenn extends StatelessWidget {
   ProfileScreenn({super.key});

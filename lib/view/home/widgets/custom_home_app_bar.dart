@@ -1,5 +1,5 @@
 import 'package:browncart_user/view/bag/bag.dart';
-import 'package:browncart_user/view/menu/menu_page.dart';
+import 'package:browncart_user/view/utils/constants/size/sized_box.dart';
 import 'package:browncart_user/view/wishlist/wishlist_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -22,32 +22,22 @@ class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Align(
-            alignment: Alignment.bottomRight,
-            child: IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const MenuPage()),
-                );
-              },
-            ),
+         
+          Row(
+            children: [
+              kWidth60,kWidth20,
+               const Text(
+            'BROWNCART',
+            style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w100,
+                color: Color.fromARGB(255, 0, 0, 0),
+                fontFamily: "Gruppo-Regular"),
           ),
-          const SizedBox(
-            width: 15,
+            ],
           ),
-          const Align(
-            alignment: Alignment.center,
-            child: Text(
-              'BROWNCART',
-              style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w100,
-                  color: Color.fromARGB(255, 0, 0, 0),
-                  fontFamily: "Gruppo-Regular"),
-            ),
-          ),
+        
+         
           const SizedBox(width: 10),
           Row(
             mainAxisSize: MainAxisSize.min,

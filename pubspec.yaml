@@ -54,7 +54,6 @@ dependencies:
   shared_preferences: ^2.1.0
   shimmer: ^3.0.0
   smooth_page_indicator: ^1.1.0
-  phonepe_payment_sdk: ^2.0.2
   crypto: ^3.0.3
 dev_dependencies:
   flutter_lints: ^3.0.0

@@ -150,6 +150,22 @@ class Cart {
     );
   }
 
+  Cart copyWith({
+    String? productName,
+    String? image,
+    int? price,
+    int? itemCount,
+    String? selectedSize,
+  }) {
+    return Cart(
+      productName: productName ?? this.productName,
+      image: image ?? this.image,
+      price: price ?? this.price,
+      itemCount: itemCount ?? this.itemCount,
+      selectedSize: selectedSize ?? this.selectedSize,
+    );
+  }
+
   static Future<void> addToCart({
     required String user,
     required String productName,
