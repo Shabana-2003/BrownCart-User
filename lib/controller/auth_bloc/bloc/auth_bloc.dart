@@ -9,17 +9,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   
   AuthBloc() : super(AuthInitial()) {
 
-    // on<LoginWithEmailPassword>((event, emit) async {
-    //   emit(AuthLoading());
-    //   try {
-    //     await _auth.signInWithEmailAndPassword(email: event.email, password: event.password);
-    //     emit(const AuthSuccess("Login Successful"));
-    //   } on FirebaseAuthException catch (e) {
-    //     emit(AuthFailure(e.message ?? "An error occurred"));
-    //   } catch (e) {
-    //     emit(const AuthFailure("An unexpected error occurred"));
-    //   }
-    // });
     on<LoginWithEmailPassword>((event, emit) async {
   emit(AuthLoading());
   try {
