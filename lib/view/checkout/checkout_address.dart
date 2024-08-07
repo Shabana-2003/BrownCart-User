@@ -102,13 +102,13 @@ class CheckoutAddress extends StatelessWidget {
                               title: Text(address.addressName,style: priceStyle,),
                               subtitle: Text(address.addressDetails,style: checkOutAddressStyle,),
                             ),
-                            Divider(thickness: 0.8),
+                         const   Divider(thickness: 0.8),
                             GestureDetector(
                               onTap: (() async {
                                 final addressName =
                                     await Navigator.of(context).push(
                                   MaterialPageRoute(
-                                    builder: ((context) => ShippingAddress()),
+                                    builder: ((context) =>const ShippingAddress()),
                                   ),
                                 );
                                 for (var item in addressList) {
@@ -136,7 +136,7 @@ class CheckoutAddress extends StatelessWidget {
                 );
               }
             } else {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             }

@@ -136,7 +136,7 @@ class CheckoutScreen extends StatelessWidget {
                   cartItems: cartItems,
                 ),
                 kHeight20,
-                Divider(),
+               const Divider(),
                 TotalAmount(
                   cartItems: cartItems,
                   gst: roundedGst,

@@ -65,7 +65,7 @@ class _SignupScreenState extends State<SignupScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 kHeight200,
-                Text('JOIN BROWNCART NOW', style: textSignupHeadingStyle),
+                Text('JOIN BROWN CART USER NOW', style: textSignupHeadingStyle),
                 kHeight50,
                 Form(
                   key: _formKey,

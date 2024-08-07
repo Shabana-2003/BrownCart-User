@@ -16,7 +16,6 @@ allprojects {
 
 rootProject.buildDir = '../build'
 // subprojects {
-   
 // }
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"

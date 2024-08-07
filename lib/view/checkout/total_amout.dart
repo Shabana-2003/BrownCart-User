@@ -23,7 +23,8 @@ class TotalAmount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     getTotalAmount();
-    double roundedGst = double.parse((amount * (gst / 100)).toStringAsFixed(2));
+    double roundedGst = double.parse((amount * (18/ 100)).toStringAsFixed(2));
+    
     double totalWithGst = amount + roundedGst;
 
     return Padding(

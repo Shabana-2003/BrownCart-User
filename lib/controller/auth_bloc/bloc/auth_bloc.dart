@@ -9,17 +9,29 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   
   AuthBloc() : super(AuthInitial()) {
 
+    // on<LoginWithEmailPassword>((event, emit) async {
+    //   emit(AuthLoading());
+    //   try {
+    //     await _auth.signInWithEmailAndPassword(email: event.email, password: event.password);
+    //     emit(const AuthSuccess("Login Successful"));
+    //   } on FirebaseAuthException catch (e) {
+    //     emit(AuthFailure(e.message ?? "An error occurred"));
+    //   } catch (e) {
+    //     emit(const AuthFailure("An unexpected error occurred"));
+    //   }
+    // });
     on<LoginWithEmailPassword>((event, emit) async {
-      emit(AuthLoading());
-      try {
-        await _auth.signInWithEmailAndPassword(email: event.email, password: event.password);
-        emit(const AuthSuccess("Login Successful"));
-      } on FirebaseAuthException catch (e) {
-        emit(AuthFailure(e.message ?? "An error occurred"));
-      } catch (e) {
-        emit(const AuthFailure("An unexpected error occurred"));
-      }
-    });
+  emit(AuthLoading());
+  try {
+    await _auth.signInWithEmailAndPassword(email: event.email, password: event.password);
+    emit(const AuthSuccess("Login Successful"));
+  } on FirebaseAuthException catch (e) {
+    emit(AuthFailure(e.message ?? "An error occurred"));
+  } catch (e) {
+    emit(const AuthFailure("An unexpected error occurred"));
+  }
+});
+
 
     on<LoginWithGoogle>((event, emit) async {
       emit(AuthLoading());
@@ -58,14 +70,26 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     });
 
+    // on<SignOut>((event, emit) async {
+    //   emit(AuthLoading());
+    //   try {
+    //     await _auth.signOut();
+    //     emit(const AuthSuccess("SignOut Successful"));
+    //   } catch (e) {
+    //     emit(AuthFailure(e.toString()));
+    //   }
+    // });
     on<SignOut>((event, emit) async {
       emit(AuthLoading());
       try {
         await _auth.signOut();
-        emit(const AuthSuccess("SignOut Successful"));
+        emit(const AuthSuccess("Sign-Out Successful"));
+      } on FirebaseAuthException catch (e) {
+        emit(AuthFailure(e.message ?? "An error occurred"));
       } catch (e) {
-        emit(AuthFailure(e.toString()));
+        emit(const AuthFailure("An unexpected error occurred"));
       }
     });
+  
   }
 }

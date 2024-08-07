@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:216298271007:android:b73eedf7e544f733a0402a",
         "android_client_info": {
-          "package_name": "com.example.browncart_user"
+          "package_name": "in.browncartuser.browncart_user"
         }
       },
       "oauth_client": [],

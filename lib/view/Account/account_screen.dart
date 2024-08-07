@@ -90,42 +90,9 @@ class ProfileScreenn extends StatelessWidget {
                       'Download BrownCart from Amazon App Store For Free \nWith BrownCart you purchase women outfits, formals and casuals of various brands. Download Now On Amazon App Store');
                 },
               ),
-              // ListTileWidget(
-              //   icon: const Icon(Icons.security_rounded),
-              //   title: Text(
-              //     'Privacy policy',
-              //     style: listStyle,
-              //   ),
-              //   onPress: () {
-              //     Navigator.push(
-              //       context,
-              //       MaterialPageRoute(
-              //         builder: ((context) =>
-              //             SettingsScreenWidget(screenName: 'Privacy Policy')),
-              //       ),
-              //     );
-              //   },
-              // ),
-              // ListTileWidget(
-              //   icon: const Icon(Icons.policy_rounded),
-              //   title: Text(
-              //     'Terms and conditions',
-              //     style: listStyle,
-              //   ),
-              //   onPress: () {
-              //     Navigator.push(
-              //       context,
-              //       MaterialPageRoute(
-              //         builder: ((context) => SettingsScreenWidget(
-              //               screenName: 'Terms And Conditions',
-              //             )),
-              //       ),
-              //     );
-              //   },
-              // ),
              
               kHeight20,
-              Text(
+            const Text(
                 'Version 1.0.0',
                 style: TextStyle(
                   fontSize: 12,

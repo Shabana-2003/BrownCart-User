@@ -22,12 +22,12 @@ class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-         
+        
           Row(
             children: [
-              kWidth60,kWidth20,
-               const Text(
-            'BROWNCART',
+              kWidth60,
+              const Text(
+            'BROWNCARTUSER',
             style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w100,
@@ -37,7 +37,7 @@ class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
             ],
           ),
         
-         
+        
           const SizedBox(width: 10),
           Row(
             mainAxisSize: MainAxisSize.min,

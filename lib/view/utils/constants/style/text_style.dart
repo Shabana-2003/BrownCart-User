@@ -154,3 +154,5 @@ TextStyle AddressStyle =
                           fontWeight: FontWeight.w500,
                           color: kBlack,
                           fontFamily: "Gruppo-Regular");
+                          TextStyle cartStylee =
+    TextStyle(fontSize: 17, fontWeight: FontWeight.bold, color: kBlack, fontFamily: "Gruppo-Regular");

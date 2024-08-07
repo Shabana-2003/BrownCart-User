@@ -18,10 +18,10 @@ class SelectedItemElevatedButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: backColor, // Use the provided backColor
-        minimumSize: Size(double.infinity, 60), // Full width, height 35
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.zero, // No border radius for rectangular shape
+        backgroundColor: backColor, 
+        minimumSize:const Size(double.infinity, 60), 
+        shape:const RoundedRectangleBorder(
+          borderRadius: BorderRadius.zero, 
         ),
       ),
       onPressed: onPressed,
