@@ -179,7 +179,7 @@ class MyAddresses extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute<StatelessWidget>(
-                      builder: (BuildContext context) => AddressForm(),
+                      builder: (BuildContext context) => const AddressForm(),
                     ),
                   );
                 },
@@ -196,13 +196,13 @@ class MyAddresses extends StatelessWidget {
                   stream: Address.getAllAddresses(user!),
                   builder: (context, snapshot) {
                     if (snapshot.hasError) {
-                      return Center(
+                      return const Center(
                         child: Text('Something went wrong'),
                       );
                     } else if (snapshot.hasData) {
                       final addressList = snapshot.data;
                       if (addressList!.isEmpty) {
-                        return Center(
+                        return const Center(
                           child: Text('No addresses'),
                         );
                       } else {

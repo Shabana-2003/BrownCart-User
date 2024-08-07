@@ -46,9 +46,9 @@ class _ShippingAddressState extends State<ShippingAddress> {
                         : Column(
                             children: [
                               ListView.separated(
-                                padding: EdgeInsets.all(10),
+                                padding: const EdgeInsets.all(10),
                                 shrinkWrap: true,
-                                physics: ScrollPhysics(),
+                                physics: const ScrollPhysics(),
                                 itemBuilder: ((context, index) {
                                   return Container(
                                     height: 100,
@@ -88,7 +88,7 @@ class _ShippingAddressState extends State<ShippingAddress> {
                                   );
                                 }),
                                 separatorBuilder: ((context, index) {
-                                  return Divider();
+                                  return const Divider();
                                 }),
                                 itemCount: addressList.length,
                               ),

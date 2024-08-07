@@ -16,7 +16,6 @@ class HomeGridView extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator(color: kBrown,));
           } else if (snapshot.hasError) {
-            print('Stream error: ${snapshot.error}');
             return Center(child: Text("Error: ${snapshot.error}"));
           } else if (snapshot.hasData) {
             final products = snapshot.data!;

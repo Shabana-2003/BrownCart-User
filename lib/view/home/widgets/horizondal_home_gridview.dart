@@ -26,7 +26,6 @@ class HorizontalHomeGridView extends StatelessWidget {
               ),
             );
           } else if (snapshot.hasError) {
-            print('Stream error: ${snapshot.error}');
             return Center(child: Text("Error: ${snapshot.error}"));
           } else if (snapshot.hasData) {
             final products = snapshot.data!;

@@ -279,6 +279,8 @@
 //     );
 //   }
 
+// ignore_for_file: use_build_context_synchronously
+
 //   Widget buildIndicator() {
 //     return AnimatedSmoothIndicator(
 //       activeIndex: activeIndex,
@@ -389,7 +391,7 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
                           child: CommonText(
                             size: 17,
                             title: '₹ ${widget.product.price}',
-                            color: Color.fromARGB(255, 133, 80, 23),
+                            color: const Color.fromARGB(255, 133, 80, 23),
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -420,7 +422,7 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
                                         width: 1.0,
                                       ),
                                     ),
-                                    padding: EdgeInsets.symmetric(horizontal: 9.0, vertical: 4.5),
+                                    padding: const EdgeInsets.symmetric(horizontal: 9.0, vertical: 4.5),
                                     child: Text(
                                       size[0].toUpperCase() + size.substring(1),
                                       style: TextStyle(
