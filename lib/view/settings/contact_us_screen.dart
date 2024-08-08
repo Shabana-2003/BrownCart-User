@@ -1,7 +1,11 @@
+import 'package:browncart_user/view/utils/colors/app_colors.dart';
+import 'package:browncart_user/view/utils/constants/size/sized_box.dart';
 import 'package:browncart_user/view/utils/constants/style/commen_text.dart';
 import 'package:flutter/material.dart';
 
 class ContactUsScreen extends StatelessWidget {
+  const ContactUsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,43 +18,41 @@ class ContactUsScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'For any questions, concerns, or feedback, feel free to reach out to our support team. We are here to assist you!',
               style: TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 16),
-            Text(
+            kHeight16,
+            const Text(
               'Email:',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
             ),
-            SizedBox(height: 8),
-            Text(
+            kHeight8,
+            const Text(
               'Send us an email at:',
               style: TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 8),
+            kHeight8,
             InkWell(
-              onTap: () {
-                // Implement logic to open the email client with the provided email address
-              },
+              onTap: () {},
               child: Text(
                 'support@browncartuser.com',
                 style: TextStyle(
-                  color: Colors.blue,
+                  color: kBlue,
                   decoration: TextDecoration.underline,
                   fontSize: 16,
                 ),
               ),
             ),
-            SizedBox(height: 16),
-            Text(
+            kHeight16,
+            const Text(
               'We strive to respond to your inquiries promptly and provide the assistance you need. Thank you for choosing Brown Cart User!',
               style: TextStyle(fontSize: 16),
             ),

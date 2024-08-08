@@ -103,12 +103,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               ),
             ),
             const SizedBox(height: 20),
-             Text(
+            Text(
               'Gender',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w500,
-                color:kBlack,
+                color: kBlack,
                 fontFamily: "Gruppo-Regular",
               ),
             ),
@@ -209,7 +209,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
-                    color:kBlack,
+                    color: kBlack,
                     fontFamily: "Gruppo-Regular",
                   ),
                 ),

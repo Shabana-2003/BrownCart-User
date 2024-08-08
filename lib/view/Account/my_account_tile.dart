@@ -8,6 +8,7 @@ import 'widgets/circle_avatar_widget.dart';
 import 'widgets/my_account_widget.dart';
 
 class MyAccountTile extends StatefulWidget {
+  // ignore: prefer_const_constructors_in_immutables
   MyAccountTile({
     super.key,
     required this.user,
@@ -38,6 +39,7 @@ class _MyAccountTileState extends State<MyAccountTile> {
               final user =
                   await UserModel.getCurrentUserData(email: userEmail!);
               Navigator.push(
+                // ignore: use_build_context_synchronously
                 context,
                 MaterialPageRoute(
                   builder: ((context) => EditProfileScreenn(
@@ -72,7 +74,7 @@ class _MyAccountTileState extends State<MyAccountTile> {
               ),
               kHeight30,
               MyAccountWidget(
-                text: widget.user.firstName + ' ' + widget.user.lastName,
+                text: '${widget.user.firstName} ${widget.user.lastName}',
               ),
               kHeight30,
               MyAccountWidget(

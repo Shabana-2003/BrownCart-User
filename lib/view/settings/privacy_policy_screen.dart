@@ -1,7 +1,10 @@
+import 'package:browncart_user/view/utils/constants/size/sized_box.dart';
 import 'package:browncart_user/view/utils/constants/style/commen_text.dart';
 import 'package:flutter/material.dart';
 
 class PrivacyPolicyScreen extends StatelessWidget {
+  const PrivacyPolicyScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,29 +17,29 @@ class PrivacyPolicyScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Privacy Policy',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
             ),
-            SizedBox(height: 8),
-            Text(
+            kHeight8,
+            const Text(
               'Last Updated: July 29, 2024',
               style: TextStyle(
                 color: Colors.grey,
               ),
             ),
-            SizedBox(height: 16),
-            Text(
+            kHeight16,
+            const Text(
               'Welcome to Brown Cart User, your personal dress shopping destination! This Privacy Policy outlines how Brown Cart User collects, uses, and protects your personal information. By using Brown Cart User, you agree to the terms outlined in this policy.',
             ),
-            SizedBox(height: 16),
+            kHeight16,
             _buildPrivacyPolicyItem(
               'Information We Collect',
               'User Data: Brown Cart User collects and stores user data you input into the application, including email, address, and order history for order placement and authentication purposes.',
@@ -73,8 +76,8 @@ class PrivacyPolicyScreen extends StatelessWidget {
               'Disclaimer',
               'No Guarantees: Brown Cart User is provided "as is" without any guarantees. We are not liable for any decisions made based on the information provided by the application.',
             ),
-            SizedBox(height: 16),
-            Text(
+            kHeight16,
+            const Text(
               'By using Brown Cart User, you acknowledge that you have read, understood, and agree to this Privacy Policy.',
             ),
           ],
@@ -87,15 +90,15 @@ class PrivacyPolicyScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 16),
+        kHeight16,
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.w500,
             fontSize: 16,
           ),
         ),
-        SizedBox(height: 8),
+        kHeight8,
         Text(content),
       ],
     );

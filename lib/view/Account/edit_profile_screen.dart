@@ -77,7 +77,7 @@ class _EditProfileScreenState extends State<EditProfileScreenn> {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8),
                                 color: kWhite),
-                            child: Icon(Icons.add_a_photo_outlined),
+                            child: const Icon(Icons.add_a_photo_outlined),
                           ),
                         ),
                       ),
@@ -88,7 +88,7 @@ class _EditProfileScreenState extends State<EditProfileScreenn> {
                 TextFormFieldWidget(
                   keyboardType: TextInputType.text,
                   hintText: 'First name',
-                  icon: Icon(Icons.people),
+                  icon: const Icon(Icons.people),
                   controller: firstNameController,
                   validator: ((value) {
                     if (value != null && value.length < 4) {
@@ -102,7 +102,7 @@ class _EditProfileScreenState extends State<EditProfileScreenn> {
                 TextFormFieldWidget(
                   keyboardType: TextInputType.text,
                   hintText: 'Last name',
-                  icon: Icon(Icons.people),
+                  icon: const Icon(Icons.people),
                   controller: lastNameController,
                   validator: ((value) {
                     if (value != null && value.length < 2) {
@@ -116,7 +116,7 @@ class _EditProfileScreenState extends State<EditProfileScreenn> {
                 TextFormFieldWidget(
                   keyboardType: TextInputType.number,
                   hintText: 'Phone number',
-                  icon: Icon(Icons.phone_android_outlined),
+                  icon: const Icon(Icons.phone_android_outlined),
                   controller: phoneNumberController,
                   validator: ((value) {
                     String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
@@ -151,10 +151,10 @@ class _EditProfileScreenState extends State<EditProfileScreenn> {
                       image: newImage!,
                     );
                     await UserModel.editUserDetails(user: newUser);
-                    showSnackBar(context, 'Profile updated successfully', Colors.deepPurple);
-                    setState(() {
-                      
-                    });
+                    // ignore: use_build_context_synchronously
+                    showSnackBar(context, 'Profile updated successfully',
+                        Colors.deepPurple);
+                    setState(() {});
                   }),
                   text: 'Save',
                   color: kBrown,

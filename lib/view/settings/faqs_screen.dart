@@ -1,7 +1,10 @@
+import 'package:browncart_user/view/utils/constants/size/sized_box.dart';
 import 'package:browncart_user/view/utils/constants/style/commen_text.dart';
 import 'package:flutter/material.dart';
 
 class FAQsScreen extends StatelessWidget {
+  const FAQsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,7 +17,7 @@ class FAQsScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -72,15 +75,15 @@ class FAQsScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 16),
+        kHeight16,
         Text(
           question,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.w500,
             fontSize: 16,
           ),
         ),
-        SizedBox(height: 8),
+        kHeight8,
         Text(answer),
       ],
     );

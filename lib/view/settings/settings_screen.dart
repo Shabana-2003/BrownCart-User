@@ -1,27 +1,29 @@
-import 'package:browncart_user/view/settings/InstructionalContentScreen.dart';
-import 'package:browncart_user/view/settings/PrivacyPolicyScreen.dart';
-import 'package:browncart_user/view/settings/TermsOfUseScreen.dart';
-import 'package:browncart_user/view/settings/contactus.dart';
-import 'package:browncart_user/view/settings/faq.dart';
+import 'package:browncart_user/view/settings/instructional_content_screen.dart';
+import 'package:browncart_user/view/settings/privacy_policy_screen.dart';
+import 'package:browncart_user/view/settings/terms_of_use_screen.dart';
+import 'package:browncart_user/view/settings/contact_us_screen.dart';
+import 'package:browncart_user/view/settings/faqs_screen.dart';
 import 'package:browncart_user/view/utils/constants/style/commen_text.dart';
 import 'package:browncart_user/view/utils/constants/style/text_style.dart';
 
 import 'package:flutter/material.dart';
 
 class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:AppBar(
-          title: const CommonText(
-            size: 26,
-            title: "Settings",
-            fontWeight: FontWeight.w100,
-          ),
-          centerTitle: true,
+      appBar: AppBar(
+        title: const CommonText(
+          size: 26,
+          title: "Settings",
+          fontWeight: FontWeight.w100,
         ),
+        centerTitle: true,
+      ),
       body: ListView(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         children: [
           _buildSettingsItem(
             'Terms of Use',
@@ -71,44 +73,44 @@ class SettingsScreen extends StatelessWidget {
   }
 
   Widget _buildSettingsItem(String title, String subtitle, VoidCallback onTap) {
-  return Column(
-    children: [
-      ListTile(
-        contentPadding: EdgeInsets.only(left: 5, right: 10), // Adjust left and right padding
-        title: Text(
-          title,
-          style: cartStylee,
+    return Column(
+      children: [
+        ListTile(
+          contentPadding: const EdgeInsets.only(left: 5, right: 10),
+          title: Text(
+            title,
+            style: cartStylee,
+          ),
+          subtitle: Text(subtitle, style: textordertrack),
+          onTap: onTap,
         ),
-        subtitle: Text(
-          subtitle,
-          style:textordertrack// Lighten the subtitle text
-        ),
-        onTap: onTap,
-      ),   
-    ],
-  );
-}
-
-
+      ],
+    );
+  }
 
   void _navigateToTermsOfUse(BuildContext context) {
-    Navigator.push(context, MaterialPageRoute(builder: (_) => TermsOfUseScreen()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (_) => TermsOfUseScreen()));
   }
 
   void _navigateToPrivacyPolicy(BuildContext context) {
-   Navigator.push(context, MaterialPageRoute(builder: (_) => PrivacyPolicyScreen()));
+    Navigator.push(context,
+        MaterialPageRoute(builder: (_) => const PrivacyPolicyScreen()));
   }
 
   void _navigateToInstructionalContent(BuildContext context) {
-    Navigator.push(context, MaterialPageRoute(builder: (_) => InstructionalContentScreen()));
+    Navigator.push(context,
+        MaterialPageRoute(builder: (_) => const InstructionalContentScreen()));
   }
 
   void _navigateToFAQs(BuildContext context) {
-   Navigator.push(context, MaterialPageRoute(builder: (_) => FAQsScreen()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (_) => const FAQsScreen()));
   }
 
   void _navigateToContactUs(BuildContext context) {
-  Navigator.push(context, MaterialPageRoute(builder: (_) => ContactUsScreen()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (_) => const ContactUsScreen()));
   }
 
   void _showVersionInfo(BuildContext context) {
@@ -116,14 +118,14 @@ class SettingsScreen extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Version'),
-          content: Text('1.0.0'),
+          title: const Text('Version'),
+          content: const Text('1.0.0'),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('OK'),
+              child: const Text('OK'),
             ),
           ],
         );

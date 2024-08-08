@@ -2,6 +2,8 @@ import 'package:browncart_user/view/utils/constants/style/commen_text.dart';
 import 'package:flutter/material.dart';
 
 class TermsOfUseScreen extends StatelessWidget {
+  const TermsOfUseScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

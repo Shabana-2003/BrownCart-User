@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 import '../../../view/utils/constants/size/sized_box.dart';
 import '../../../view/utils/constants/style/text_style.dart';
-//import '../../model/google_sign_in.dart';
 import 'widgets/circle_avatar_widget.dart';
 import 'widgets/listtile_widget.dart';
 import 'my_account_tile.dart';
@@ -16,9 +15,6 @@ class ProfileScreenn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final User user = FirebaseAuth.instance
-    //     .currentUser!; // Now we can access the information of the loggedin user
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -36,7 +32,7 @@ class ProfileScreenn extends StatelessWidget {
                 future: UserModel.getCurrentUserData(email: userEmail!),
                 builder: ((context, snapshot) {
                   if (snapshot.hasError) {
-                    return Center(
+                    return const Center(
                       child: Text(''),
                     );
                   } else if (snapshot.hasData) {
@@ -46,24 +42,25 @@ class ProfileScreenn extends StatelessWidget {
                         CircleAvatarWidget(
                           radius: 60,
                           image: NetworkImage(user.image),
-                          // NetworkImage(user.photoURL!),// It will access the photo url of the user
                         ),
                         kHeight20,
                         Text(
-                          user.firstName.toUpperCase() +
-                              ' ' +
-                              user.lastName.toUpperCase(),
+                          '${user.firstName.toUpperCase()} ${user.lastName.toUpperCase()}',
                           style: nameStyle,
                         ),
                         kHeight20,
                         ListTileWidget(
                           icon: const Icon(Icons.account_circle),
-                          title: Text('My Account',style: listStyle,),
+                          title: Text(
+                            'My Account',
+                            style: listStyle,
+                          ),
                           onPress: () async {
                             final user = await UserModel.getCurrentUserData(
                               email: userEmail!,
                             );
                             Navigator.push(
+                              // ignore: use_build_context_synchronously
                               context,
                               MaterialPageRoute<StatelessWidget>(
                                 builder: (BuildContext context) =>
@@ -75,7 +72,7 @@ class ProfileScreenn extends StatelessWidget {
                       ],
                     );
                   } else {
-                    return CircularProgressIndicator();
+                    return const CircularProgressIndicator();
                   }
                 }),
               ),
@@ -90,9 +87,8 @@ class ProfileScreenn extends StatelessWidget {
                       'Download BrownCart from Amazon App Store For Free \nWith BrownCart you purchase women outfits, formals and casuals of various brands. Download Now On Amazon App Store');
                 },
               ),
-             
               kHeight20,
-            const Text(
+              const Text(
                 'Version 1.0.0',
                 style: TextStyle(
                   fontSize: 12,
@@ -107,5 +103,4 @@ class ProfileScreenn extends StatelessWidget {
       ),
     );
   }
-
 }
